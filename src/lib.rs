@@ -31,7 +31,7 @@ use std::os::raw::c_void;
 use std::path::{Path,PathBuf};
 use std::result::Result;
 
-use image::{GenericImage, ImageBuffer, ImageError, ImageFormat, Rgba};
+use image::{GenericImage, ImageBuffer, ImageFormat, Rgba};
 
 pub use image::DynamicImage;
 
@@ -62,7 +62,7 @@ impl fmt::Display for XrayError {
             XrayError::Io(io_error) => match io_error {
                 IoError::OutputLocationUnavailable(location) => format!("Could not write to output location: {}", location),
                 IoError::FailedWritingScreenshot(name, reason) => format!("Could not write screenshot {}:\n{}", name, reason),
-                FailedLoadingReferenceImage => format!("Reference image could not be loaded or parsed")
+                IoError::FailedLoadingReferenceImage => format!("Reference image could not be loaded or parsed")
             },
             XrayError::CaptureError => "Could not take screenshot.".to_string(),
             XrayError::Screenshot(screenshot_error) => match screenshot_error {
@@ -331,7 +331,7 @@ pub fn assert_screenshot_test<S: ScreenshotIo, C: ScreenshotCaptor>(screenshot_i
 pub fn gl_screenshot_test(test_name: &str, x: i32, y: i32, width: u32, height: u32) {
     let fs_screenshot_io: FsScreenshotIo = FsScreenshotIo::default(test_name);
     let screenshot_captor = OpenGlScreenshotCaptor {};
-    let result = assert_screenshot_test(fs_screenshot_io, screenshot_captor, x, y, width, height);
+    assert_screenshot_test(fs_screenshot_io, screenshot_captor, x, y, width, height);
 }
 
 #[cfg(test)]
