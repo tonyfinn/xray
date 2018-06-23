@@ -1,0 +1,22 @@
+[package]
+name = "spinning-square"
+version = "0.1.0"
+authors = [
+    "TyOverby <ty@pre-alpha.com>",
+    "Nikita Pekin <contact@nikitapek.in>"
+]
+publish = false
+
+[[bin]]
+name = "spinning-square"
+
+[lib]
+name = "spinning_square"
+path = "src/lib.rs"
+
+[dependencies]
+piston = "0.37.0"
+piston2d-graphics = "0.26.0"
+pistoncore-glutin_window = "0.47.0"
+piston2d-opengl_graphics = "0.53.0"
+xray = { path = "../.." }
