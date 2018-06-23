@@ -1,0 +1,30 @@
+image: rust:1.26
+
+variables:
+  CARGO_HOME: $CI_PROJECT_DIR/cargo
+
+stages:
+  - build
+  - test
+  - release
+
+build_job:
+  stage: build
+  cache:
+    key: "compile-$CI_COMMIT_REF_NAME"
+    paths:
+      - target/
+      - cargo/
+  script:
+    - cargo build
+
+test_job:
+  stage: test
+  cache:
+    key: "compile-$CI_COMMIT_REF_NAME"
+    paths:
+      - target/
+      - cargo/
+    policy: pull
+  script:
+    - cargo test
