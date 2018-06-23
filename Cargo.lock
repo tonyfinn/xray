@@ -351,7 +351,7 @@ dependencies = [
 
 [[package]]
 name = "xray"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "gl 0.10.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "image 0.19.0 (registry+https://github.com/rust-lang/crates.io-index)",
