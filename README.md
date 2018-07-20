@@ -24,7 +24,7 @@ fn check_basic_screen() {
         window_size: [width, height],
         draw_size: [draw_width, draw_height]
     });
-    xray::screenshot_test("basic_rendering/initial_map", 0, 0, draw_width, draw_height);
+    xray::gl_screenshot_test("basic_rendering/initial_map", 0, 0, draw_width, draw_height);
 }
 ```
 
